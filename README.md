@@ -1,5 +1,5 @@
-# Progetto-Djnago-di-Fontana-Giuseppe
-Risoluzione esercizi ed implementazione di un progetto derivante da una scuola di formazione.
+# Progetto-Django-di-Fontana-Giuseppe
+Risoluzione, esercizi ed implementazione di un progetto derivante da una scuola di formazione.
 Trattasi di un esercizio/studio sulle funzionalità di Djnago e metodi applicativi.
 Il progetto consisteva nell’ampliare una guida data dal formatore inserendo all’interno n.8 nuovi esercizi.
 - Allo scopo di apprendere appieno concetti, metodi e applicazioni di Django gli esercizi richiesti sono stati svolti, pero', all’interno di un progetto denominato MyFanPage.
