@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+
+{% block head_title %}{{ block.super }} - Users List{% endblock head_title %}
+
+{% block content %}
+
+<h2>Users List</h2>
+<hr>
+{% for user in object_list %}
+        <div class="row-cols-lg-5">
+            <div class ="card my-1 border border-info mb-3 ">
+                <div class="card-body py-xl-0">
+                    <p class="mb-0"><a href="{% url 'user_profile' username=user.username %}"><strong>@{{ user.username }}</strong></a></p>
+                    Registration: {{ user.date_joined|date:"d M Y" }}<br>
+                    Posts : {{ user.posts.count }}<br> <!-- numero dei post dell'utente-->
+                    Conversation : {{ user.conversations.count }}
+                </div>
+            </div>
+        </div>
+        {% if forloop.first %}<div class="row">{% endif %} <!-- posso prendere un'oggetto e sostituilro al posto di objects_list -->
+
+
+         {% if forloop.counter|divisibleby:"3" or forloop.last %}</div>{% endif %}
+         {% if forloop.counter|divisibleby:"3" and not forloop.last %}<div class="row">{% endif %}
+
+{% endfor %}
+
+
+{% endblock content %}

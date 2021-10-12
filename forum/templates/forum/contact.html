@@ -1,0 +1,41 @@
+
+<!DOCTYPE html>
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+<html lang="en">
+<head>
+{% block content %}
+
+    <meta charset="UTF-8">
+    <title>Contattami</title>
+
+
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">
+
+</head>
+    <body>
+        </div class="container">
+            <div class="row justify-content-center mt-4">
+            <div class="col-xl-4 text-center">
+                <br>
+
+              <h2>Send a message</h2>
+                 <br>
+
+            <form  method="POST" novalidate>
+                {% csrf_token %}
+                {{ form|crispy }}
+                <input type="submit"  class="btn btn-info" value="Send">
+            </form>
+
+           </div>
+
+        </div>
+
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">
+    </body>
+{% endblock content %}
+
+</html>
+
+

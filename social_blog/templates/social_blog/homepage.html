@@ -1,0 +1,49 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+{% if request.user.is_staff %}
+    <div class="card-body ps-0 pb-0">
+        <a class="btn btn-sm btn-danger" href="{% url 'create_section' %}">Create Section</a>
+    </div>
+{% endif %}
+
+{% for section in list_section %}
+    <div class="card my-3">
+        <div class="card-header">
+            <h5><a href="{{ section.get_absolute_url }}"><strong>{{ section.nome_section }}</strong></a></h5>
+            <p class="mb-0">{{ section.description }}</p>
+        </div>
+        <div class="card-body">
+            <div class="row">
+                <div class="col-lg-3">
+                    <img src="#" style="max-width:100%">
+                    <p>Conversation Total: {{ section.conversation_set.count }}
+                    <br>Total Message: {{ section.get_number_of_posts_in_section }}</p>
+                </div>
+                <div class="col-lg-9">
+                    <p>Last Conversation</p>
+                    <table class="table table-hover">
+                        <tbody>
+                            {% for conversation in section.get_last_conversation.all %}
+                                <tr class="row">
+                                    <td class="col-lg-7 col-6">
+                                        <a href="{% url 'view_conversation' pk=conversation.pk %}">{{ conversation.title }}</a>
+                                    </td>
+                                    <td class="col-lg-3 col-3">
+                                        by <a href="{% url 'user_profile' username=conversation.author_conversation.username %}">{{ conversation.author_conversation }}</a>
+                                    </td>
+                                    <td class="col-lg-2 col-3">
+                                        posts: {{ conversation.post_set.count }}</a>
+                                    </td>
+                                </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endfor %}
+
+{% endblock content %}

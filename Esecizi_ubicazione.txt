@@ -1,0 +1,28 @@
+
+Esercizi
+
+1) Social_blog/registration/login
+
+2)path('newsection/', views.CreateSection.as_view(), name="create_section"),
+    path("section/<int:pk>/", views.view_section, name="section_view"),
+    path('section/<int:pk>/create_conversation', views.create_conversation, name="create_conversation"),
+    path('conversation/<int:pk>/', views.conversation_view, name="view_conversation"),
+    path('conversation/<int:pk>response/', views.response_conversation, name="response_conversation"),
+    path('conversation/<int:id>/delete-post/<int:pk>/', views.DeletePost.as_view(), name="delete_post")
+
+3) forum/views def ForumPostList(request, pk):
+
+
+4) path('message/<int:pk>/', PostDetailView.as_view(), name='post_detail.html'),
+    path("list_users/", RelatedPostListViewCBV.as_view(), name='list_post.html'),
+
+5) crew/views  path('postLastHour', post_lasth, name='postLastHour'),
+
+
+6) crew/views  def search
+
+7) forum/forms NewPostForm(ModelForm)
+
+8) crew/views def eden_point
+
+Gli eserczi sono andato avanti con Django rest_framwork

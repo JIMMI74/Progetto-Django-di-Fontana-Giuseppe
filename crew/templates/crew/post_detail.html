@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+
+
+{% block content %}
+
+     <div class="card my-3">
+        <div class="card-header bt-bt-info">
+    <h4>User Identification Message: {{ message }}</h4>
+
+        <p><strong>User: </strong>{{object.name}}</p>
+        <h6><strong>Surname: </strong>{{object.surname}}</h6>
+        <h6><strong>Title: </strong>{{object.title}}</h6>
+        <h6><strong>Text: </strong>{{object.text}}</h6>
+        <h6><strong>Email: </strong>{{object.email}}</h6>
+        <h6><strong>Published: </strong>{{object.published}}</h6>
+        <hr>
+            <a href=" {% url 'list_post.html' %}">back end</a>
+
+        </div>
+     </div>
+{% endblock content %}

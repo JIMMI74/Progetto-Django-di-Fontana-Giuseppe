@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+
+{%block head_title %}{{block.super}} -Users{% endblock head_title %}
+
+{% block content %}
+    <h1>Received messages:</h1>
+    <hr>
+    <br>
+    <div class="card my-3">
+        <div class="card-header bt-bt-info">
+    {% for post in object_list %}
+
+        <h5><strong>User: </strong>><a href="#">{{post.name}}</a></h5>
+        <h6><strong>Title: </strong><a href="{{post.get_absolute_url}}">{{post.title}}</a></h6>
+        <h6><strong>Text: </strong>{{post.text}}</h6>
+        <h6><strong>Published: </strong>{{post.published}}</h6>
+        </div>
+        </div>
+    {% endfor %}
+{% endblock content %}

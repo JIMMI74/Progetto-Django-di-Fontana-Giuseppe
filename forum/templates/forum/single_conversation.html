@@ -1,0 +1,68 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+
+{% block head_title %}{{ block.super }} - {{ conversation.title }}{% endblock head_title %}
+
+{% block content %}
+
+    {% for post in posts_conversation %}
+        <div class="card my-3">
+            {% if forloop.first %}
+                <div class="card-header bg-info mb-3 py-0">
+                    <h3>{{ conversation.title }}</h3>
+                    <p class="text-muted">{{ conversation.create_date|date:"D d M Y" }}
+                    <br>in: {{ conversation.membership }} </p>
+                </div>
+            {% else %}
+                <div class="card-header py-0">
+                   <p class="text-black mb-0">
+                       {{ post.create_date|date:"d M Y" }}
+                       {% if request.user == post.autore_post %}
+                        <a href="{% url 'cancella_post' id=discussione.pk pk=post.pk %}"></a>
+                       {% endif %}
+                   </p>
+                </div>
+            {% endif %}
+
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-xl-2 col-4">
+                        <p class="text-muted mb-0" ></p><a href="{% url 'user_profile' username=post.author_post.username %}"><strong>{{post.author_post}}</strong></a>
+                        <p class="text-muted mb-0" >Registered: {{ post.author_post.date_joined|date:"M Y"}} </p>
+                        <p>Posts: {{ post.author_post.posts.count }}</p>
+                    </div>
+                    <div class="col-xl-10-col-8">
+                        <p class="my-0">{{post.content|linebreaks}}</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    {% endfor %}
+    <div class="text-right">
+        <span class="step-links">
+            {% if posts_conversation.has_previous %}
+                <a href="?page=1">&laquo; first</a>
+                <a href="?page={{ posts_conversation.previous_page_number }}">previous</a>
+            {% endif %}
+
+            <span class="current">
+                Page {{ posts_conversation.number }} di {{ posts_conversation.paginator.num_pages }}.
+            </span>
+
+            {% if posts_conversation.has_next %}
+                <a href="?page={{ posts_conversation.next_page_number }}">following</a>
+                <a href="?page={{ posts_conversation.paginator.num_pages }}">last &raquo;</a>
+            {% endif %}
+        </span>
+    </div>
+
+    {% if request.user.is_authenticated %}
+        {% include 'forum/form_response.html' %}
+    {% else %}
+         <div class="alert alert-info" role="alert">
+           To participate in the discussion you must first perform the <a href="{% url 'login' %}?next={{ request.get_full_path }}" > Login</a> is required
+         </div>
+
+    {% endif %}
+
+{% endblock content %}

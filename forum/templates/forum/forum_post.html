@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+
+
+
+{% block content %}
+
+<h1>Received messages:</h1>
+    <hr>
+    <br>
+         <div class="card my-3">
+        <div class="card-header">
+        {% for post in posts_conversation %}
+
+            <h3>{{ conversation.title }}</h3>
+            <p>Posts: {{ post.author_post.posts.count }}</p>
+             <p>Posts: {{ post.author_post.username }}</p>
+
+        </div>
+            </div>
+        {% endfor %}
+
+
+{% endblock content %}
+

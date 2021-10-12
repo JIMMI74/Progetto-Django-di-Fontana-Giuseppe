@@ -1,0 +1,44 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+
+</head>
+<body>
+    <h1> This is my FanPage </h1>
+    <h2> Think your Mind </h2>
+
+    <a href=" {% url 'forum_post' %}">contact</a>
+
+    <br>
+    <h3>Message:</h3>
+    {% for Post in message %}
+        <p><strong>{{ Post.user}} : </strong>{{Post.text}} , {{Post.datetime}}</p>
+
+    {% endfor %}
+
+    <hr>
+
+
+    <h3>Message_one:</h3>
+    {% for RelatedPost in message_one %}
+        <p><strong>name: </strong>{{RelatedPost.name}}</p>
+        <p><strong>surname: </strong>{{RelatedPost.surname}}</p>
+        <p><strong>title: </strong>{{RelatedPost.title}}</p>
+        <p><strong>text: </strong>{{RelatedPost.text}}</P>
+
+    <hr>
+    {% endfor %}
+    <br>
+
+{% endblock content %}
+
+
+
+
+
+{{message}}
+
+{{message_one}}</body>
